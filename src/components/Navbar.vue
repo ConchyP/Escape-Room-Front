@@ -25,7 +25,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/Welcome">Home</router-link>
+            <router-link class="nav-link" to="/Home">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/Login">Login</router-link>
           </li>
         </ul>
       </div>
@@ -35,7 +38,7 @@
 
 <style scoped>
 .custom-navbar {
-  background: linear-gradient(45deg, #000000 ,#686865f8, #393939,#686865f8, #000000); 
+  background: linear-gradient(to bottom, #000000 , #393939,#686865f8, #ffffff); 
   box-shadow: 0 4px 8px rgba(17, 17, 16, 0.56);
   transition: background-color 0.3s ease; 
 }
@@ -49,10 +52,6 @@
   height: 50px;
   width: 350px;
 }
-
-/* .slogan-line {
-  display: block;
-} */
 
 .navbar-toggler {
   border-color: rgba(15, 13, 13, 0.5);
