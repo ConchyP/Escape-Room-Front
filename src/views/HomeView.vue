@@ -1,4 +1,6 @@
-<script setup>
+ <script setup>
+import Login from '@/components/Login.vue';
+
 
 </script>
 
@@ -10,6 +12,7 @@
   
     <div class="full-screen-image">
       <img src="../assets/images/Background.jpg" alt="Imagen completa" />
+      <Login/>
     </div>
   
    </main> 
@@ -20,6 +23,7 @@
   .full-screen-image {
     position: absolute; 
     top: 0;
+    bottom: auto;
     left: 0;
     width: 100vw;
     height: 100vh; 
@@ -40,7 +44,4 @@
       object-fit: contain; 
     }
   }
-  </style>
-  
-  
-  
+  </style> 
