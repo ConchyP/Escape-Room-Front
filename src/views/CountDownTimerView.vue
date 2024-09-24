@@ -1,6 +1,6 @@
-<!-- <script setup>
+<script setup>
 
-import CountDownTimer from '@/components/CountDownTimer.vue';
+
 
 
 </script>
@@ -11,7 +11,7 @@ import CountDownTimer from '@/components/CountDownTimer.vue';
 
 <div>
 
-<CountDownTimer/>
+
 
 </div>
 
@@ -21,4 +21,4 @@ import CountDownTimer from '@/components/CountDownTimer.vue';
 
 <style scoped>
 
-</style>  -->
+</style> 

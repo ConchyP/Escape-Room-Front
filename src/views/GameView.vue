@@ -1,6 +1,6 @@
-<!-- <script setup>
+<script setup>
 
-import Game from '@/components/Game.vue';
+
 
 
 </script>
@@ -10,8 +10,8 @@ import Game from '@/components/Game.vue';
 <main>
 
 <div>
+<h1>HOLAAAAAA</h1>
 
-<Game/>
 
 </div>
 
@@ -21,4 +21,4 @@ import Game from '@/components/Game.vue';
 
 <style scoped>
 
-</style>  -->
+</style> 

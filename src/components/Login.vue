@@ -1,7 +1,70 @@
-<script setup>
 
+<script setup>
+import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { usePopupStore } from "../stores/popup";
+import { useAuthStore } from "@/stores/auth";
+import { loginChange } from "@/stores/loginChange";
+
+const popupStore = usePopupStore();
+const authStore = useAuthStore();
+const router = useRouter();
+const route = useRoute();
+
+const isLoginActive = ref(true);
+const username = ref("");
+const password = ref(""); // Cambia loginPassword a password para mayor claridad
+const showPass = ref(false); // Inicializa la variable showPass
+const textAlert = ref("");
+
+// Función para alternar la visibilidad de la contraseña
+const toggleShowPassword = () => {
+  showPass.value = !showPass.value;
+};
+
+// Función para manejar el inicio de sesión
+const handleLogin = async () => {
+  if (username.value.trim() === "" || password.value.trim() === "") {
+    textAlert.value = "Username or password cannot be empty!";
+    return; // Evitar que continúe si los campos están vacíos
+  }
+
+  try {
+    const response = await authStore.login(username.value, password.value);
+
+    if (response.message === "Logged") {
+      authStore.user.isAuthenticated = true;
+      authStore.user.id = response.id;
+      authStore.user.username = response.username;
+      authStore.user.role = response.roles;
+
+      // Almacenar información en localStorage
+      localStorage.setItem("id", response.id);
+      localStorage.setItem("username", response.username);
+      localStorage.setItem("role", response.roles);
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("token", btoa(`${username.value}:${password.value}`));
+
+      const redirectPath = route.query.redirect || "/game";
+      await router.push(redirectPath);
+
+      closePopup(); // Cierra el popup después del inicio de sesión
+    } else {
+      textAlert.value = "Incorrect username or password!";
+    }
+  } catch (error) {
+    textAlert.value = "Error trying to login, please try again.";
+    console.error("Login error:", error); // Log para depuración
+  }
+};
+
+// Función para alternar entre el registro y el inicio de sesión
+const Register = () => {
+  loginChange.setRegister(!loginChange.register);
+};
 
 </script>
+
 
 <template>
   <div class="limit">
