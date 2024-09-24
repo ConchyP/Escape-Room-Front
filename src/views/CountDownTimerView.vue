@@ -1,5 +1,5 @@
 <script setup>
-
+import CountDownTimer from '@/components/CountDownTimer.vue';
 
 
 
@@ -10,7 +10,7 @@
 <main>
 
 <div>
-
+<CountDownTimer/>
 
 
 </div>
