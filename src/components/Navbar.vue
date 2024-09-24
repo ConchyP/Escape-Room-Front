@@ -1,6 +1,7 @@
 
 <script setup>
 
+                        
 </script>
 
 <template>
@@ -29,6 +30,12 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/Login">Login</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/Game">Game</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/CountDownTimer">Timer</router-link>
           </li>
         </ul>
       </div>
@@ -76,4 +83,5 @@
 .nav-link:active {
   color: #d26e0a; 
 }
+
 </style>

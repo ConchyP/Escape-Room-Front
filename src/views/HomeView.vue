@@ -1,13 +1,12 @@
  <script setup>
+
 import Login from '@/components/Login.vue';
 
 
 </script>
 
-
 <template>
 
- 
   <main>
   
     <div class="full-screen-image">
@@ -16,12 +15,14 @@ import Login from '@/components/Login.vue';
     </div>
   
    </main> 
-   
+  
   </template>
   
   <style scoped>
+ 
   .full-screen-image {
     position: absolute; 
+    margin-top: 100px;
     top: 0;
     bottom: auto;
     left: 0;

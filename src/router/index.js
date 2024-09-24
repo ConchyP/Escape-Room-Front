@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import WelcomeView from '@/views/WelcomeView.vue'
 
 const router = createRouter({
@@ -19,6 +18,16 @@ const router = createRouter({
       path: '/Login',
       name: 'Login',
       component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/Game',
+      name: 'Game',
+      component: () => import('../views/GameView.vue')
+    },
+    {
+      path: '/CountDownTimer',
+      name: 'CountDownTimer',
+      component: () => import('../views/CountDownTimerView.vue')
     }
   ]
 })

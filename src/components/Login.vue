@@ -1,39 +1,24 @@
 <script setup>
-import { ref } from 'vue';
 
 
-const email = ref('');
-const password = ref('');
-const showPass = ref(false);
-
-
-const toggleShowPassword = () => {
-  showPass.value = !showPass.value;
-};
-
-
-const login = () => {
-  console.log('Email:', email.value);
-  console.log('Password:', password.value);
- 
-};
 </script>
 
 <template>
-
- 
   <div class="limit">
     <div class="login-container">
       <div class="bb-login">
         <form class="bb-form validate-form">
-          <span class="bb-form-title p-b-26">Bienvenid@ </span>
+          <span class="bb-form-title p-b-26">Bienvenid@</span>
           <span class="bb-form-title p-b-48">
             <i class="mdi mdi-symfony"></i>
           </span>
-          <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-            <input class="input100" type="text" v-model="email" />
-            <span class="bbb-input" data-placeholder="Email"></span>
+
+         
+          <div class="wrap-input100 validate-input" data-validate="Username is required">
+            <input class="input100" type="text" v-model="username" />
+            <span class="bbb-input" data-placeholder="Username"></span>
           </div>
+
           <div class="wrap-input100 validate-input" data-validate="Enter password">
             <span class="btn-show-pass" @click="toggleShowPassword">
               <i :class="showPass ? 'mdi mdi-eye-off' : 'mdi mdi-eye'"></i>
@@ -41,12 +26,21 @@ const login = () => {
             <input class="input100" :type="showPass ? 'text' : 'password'" v-model="password" />
             <span class="bbb-input" data-placeholder="Password"></span>
           </div>
+
+         
           <div class="login-container-form-btn">
             <div class="bb-login-form-btn">
               <div class="bb-form-bgbtn"></div>
-              <button class="bb-form-btn" @click.prevent="login">Login</button>
+              <button class="bb-form-btn" @click.prevent="handleLogin">Login</button>
             </div>
           </div>
+
+        
+          <div v-if="textAlert" class="text-alert">
+            {{ textAlert }}
+          </div>
+
+        
           <div class="text-center p-t-115">
             <span class="txt1">Don’t have an account?</span>
             <a class="txt2" href="#">Sign Up</a>
@@ -55,8 +49,9 @@ const login = () => {
       </div>
     </div>
   </div>
-
 </template>
+
+
 
 <style scoped>
  
