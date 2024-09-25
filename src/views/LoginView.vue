@@ -15,5 +15,7 @@ import Login from '@/components/Login.vue';
 </template>
 
 <style scoped>
-
+.main{
+    background-color: orangered;
+}
 </style>

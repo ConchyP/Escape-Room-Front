@@ -10,7 +10,7 @@ import Login from '@/components/Login.vue';
   <main>
   
     <div class="full-screen-image">
-      <img src="../assets/images/Background.jpg" alt="Imagen completa" />
+      <img src="../assets/images/Diseño sin título (2).png" alt="Imagen completa" />
       <Login/>
     </div>
   

@@ -25,7 +25,7 @@ const startGame = () => {
 
 const nextRound = () => {
   if (currentRound.value >= maxRounds) {
-    message.value = '¡Enhorabuena!'
+    message.value = '¡Impresionate, parece que tienes buen ojo. Pero esto era solo el calentamiento'
     link.value = '/next-view' 
     showMessage.value = true
     return
@@ -143,9 +143,9 @@ const handleClick = (index) => {
 .start-button {
   padding: 15px 30px;
   font-size: 20px;
-  background-color: rgb(255, 200, 0); 
-  color: #04213e; 
-  border: 2px solid rgb(255, 251, 0); 
+  background-color: #ffb700; 
+  color: #040404; 
+  border: 2px solid rgb(225, 209, 130); 
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold; 
