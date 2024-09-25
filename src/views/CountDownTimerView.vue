@@ -1,5 +1,5 @@
 <script setup>
-import CountDownTimer from '@/components/CountDownTimer.vue';
+import CountDownTimer from '@/components/game/CountDownTimer.vue';
 
 
 
