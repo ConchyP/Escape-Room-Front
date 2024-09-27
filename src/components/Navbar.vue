@@ -9,8 +9,8 @@
     <div class="container-fluid">
   
       <a class="navbar-brand d-flex align-items-center" href="../views/HomeView.vue">
-        <img src="../assets/images/LogoEscapeRoom.png" alt="Logo" class="logo-image" />
-        <img src="../assets/images/EscapeRoomOnline.png" alt="Logo" class="name-image" />
+        <img src="../assets/images/Logo.png" alt="Logo" class="logo-image" />
+
 
         <div class="slogan-container ms-3">
           <span class="slogan-line"></span>
@@ -37,6 +37,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/CountDownTimer">Timer</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/Card">Card</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -45,13 +48,14 @@
 
 <style scoped>
 .custom-navbar {
-  background: linear-gradient(to bottom, #000000 , #393939,#686865f8, #ffffff); 
+  background: linear-gradient(to bottom, #000000 , #393939, #000000); 
   box-shadow: 0 4px 8px rgba(17, 17, 16, 0.56);
   transition: background-color 0.3s ease; 
+  position:fixed;
 }
 
 .logo-image {
-  height: 90px;
+  height: 50px;
   width: auto;
 }
 
@@ -84,4 +88,21 @@
   color: #d26e0a; 
 }
 
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 16px; 
+    margin-right: 10px; 
+  }
+
+  .logo-image {
+    height: 70px; 
+  }
+
+  .name-image {
+    height: 40px; 
+  }
+}
+
+
 </style>
+

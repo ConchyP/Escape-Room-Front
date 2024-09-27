@@ -57,7 +57,7 @@ const startGame = () => {
 </style> -->
 <script setup>
 import MsnStartGame from '@/components/game/MsnStartGame.vue';
-import Game1Colors from '@/components/game/Game1Colors.vue'; // Importa el nuevo componente
+// import Game1Colors from '@/components/game/Game1Colors.vue'; 
 import CountDownTimer from '@/components/game/CountDownTimer.vue';
 </script>
 <template>
@@ -67,10 +67,10 @@ import CountDownTimer from '@/components/game/CountDownTimer.vue';
         <MsnStartGame/>
       <div class="counter">
         <CountDownTimer/>
-      </div>
+      <!-- </div>
        <div class="background-component">
-         <Game1Colors/> <!-- Componente que se muestra detrás -->
-       </div>
+          <Game1Colors/> -->
+       </div> 
        </div>
      </div>
   </main>
@@ -78,10 +78,16 @@ import CountDownTimer from '@/components/game/CountDownTimer.vue';
 
 
 <style scoped>
+main{
+  background-color: black;
+  width: 100vh;
+  height: 100vh; 
+    overflow: hidden; 
+}
 .main-content {
   position: relative;
-  width: 100%;
-  height: 100vh; /* O lo que necesites para que cubra la pantalla */
+  width: 100vh;
+  height: 100%; /* O lo que necesites para que cubra la pantalla */
 }
 
 .main-content counter {
@@ -91,7 +97,7 @@ import CountDownTimer from '@/components/game/CountDownTimer.vue';
   z-index: 10; /* Para asegurarte que esté sobre otros elementos */
 }
 .container {
- position: relative; /* Para manejar el posicionamiento relativo de los hijos */
+ position: relative; /* Para que se vean los otros juegos */
  width: 100%;
  height: 100vh; /* Altura completa de la ventana */
 }
@@ -102,11 +108,11 @@ import CountDownTimer from '@/components/game/CountDownTimer.vue';
  left: 0;
  width: 100%;
  height: 100%;
- z-index: 1; /* Coloca el componente en el fondo */
+ z-index: 1; /* Pongo el componente en el fondo */
 }
 
 .foreground-component {
  position: relative;
- z-index: 2; /* Coloca el componente delante del fondo */
+ z-index: 2; /* Pongo el componente delante del fondo */
 }
 </style>

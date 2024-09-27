@@ -1,5 +1,4 @@
-<script setup>
-
+ <script setup>
 import { ref, onMounted } from 'vue';
 import CountDownTimer from '@/components/game/CountDownTimer.vue'; 
 import Game1Colors from './Game1Colors.vue';
@@ -106,51 +105,66 @@ const startGame = () => {
     
     <!-- Botón "Comenzar" solo se muestra cuando se está preparando -->
    <button v-if="!isTyping && isPreparing" @click="startGame" class="start-button">
-      Comenzar
-    </button>
+    Comenzar
+  </button>
 
-    <!-- Componente CountDown  -->
-    <CountDownTimer v-if="isGameStarted" calss="timer" />
-    <Game1Colors v-if="isGameStarted" />
+  <!-- Temporizador por encima del juego -->
+  <div v-if="isGameStarted" class="game-area">
+    <CountDownTimer class="timer" />
+    <Game1Colors />
   </div>
+</div>
 </template>
 
 <style>
 .console {
-  font-family: monospace;
-  background-color: black;
-  color: green;
-  width: 1200px;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-  
+font-family: monospace;
+color: green;
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 20px;
+box-sizing: border-box;
+text-align: center;
 }
 
 .typing-effect {
-  white-space: pre;
-  margin-bottom: 20px;
+white-space: pre;
+font-size: 1.5rem;
+line-height: 1.6;
+margin-bottom: 20px;
 }
 
 .error {
-  color: red;
+color: red;
 }
 
 .hack {
-  color: yellow;
+color: yellow;
 }
 
 .start-button {
-  background-color: #d26e0a;
-  color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin-top: 20px;
+background-color: #d26e0a;
+color: white;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 10px 20px;
+margin-top: 20px;
+font-size: 1.2rem;
 }
-</style> 
+
+.game-area {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.timer {
+margin-bottom: 20px; /* Espacio entre el temporizador y el juego */
+}
+</style>

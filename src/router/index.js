@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/CountDownTimer',
       name: 'CountDownTimer',
       component: () => import('../views/CountDownTimerView.vue')
+    },
+    {
+      path: '/Card',
+      name: 'Card',
+      component: () => import('../views/CardView.vue')
     }
   ]
 })
