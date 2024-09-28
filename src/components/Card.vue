@@ -1,4 +1,57 @@
+<script setup>
 
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+// Estado reactivo para almacenar los escape rooms y el control del texto expandido
+const escapeRooms = ref([]);  // Guardar la lista de escape rooms
+const showMore = ref([]);     // Controlar el estado expandido para cada tarjeta
+
+// Función para alternar el estado de 'showMore' para cada tarjeta
+const toggleShowMore = (index) => {
+  showMore.value[index] = !showMore.value[index];
+};
+
+// Función para obtener los datos del backend
+const fetchEscapeRooms = async () => {
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'http://localhost:8080/api/v1/escapeRooms/all',
+    headers: { 
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Asegúrate de que esta autenticación esté bien configurada
+      'Cookie': 'JSESSIONID=AC045ED1927C424A61F1063ECB067870'
+    }
+  };
+
+  try {
+    const response = await axios.request(config);
+    escapeRooms.value = response.data;
+    showMore.value = new Array(response.data.length).fill(false);  // Inicializa 'showMore' con 'false'
+  } catch (error) {
+    console.error("Error al obtener los escape rooms:", error);
+  }
+};
+
+// Ejecutar la función cuando el componente se monte
+onMounted(() => {
+  fetchEscapeRooms();
+});
+
+const getDifficultyLevel = (difficulty) => {
+  if (typeof difficulty === 'string') {
+    // Normalizar el texto a minúsculas y comparar
+    if (difficulty.toLowerCase() === 'baja') return 1;
+    if (difficulty.toLowerCase() === 'media') return 2;
+    if (difficulty.toLowerCase() === 'alta') return 3;
+  } else if (typeof difficulty === 'number') {
+    // Si la dificultad es un número directamente
+    return difficulty;
+  }
+  // Valor por defecto en caso de que no se cumpla ninguna condición
+  return 0;
+};
+</script>
 <template>
     <div class="container">
       <div v-for="(escapeRoom, index) in escapeRooms" :key="escapeRoom.id" class="custom-card">
