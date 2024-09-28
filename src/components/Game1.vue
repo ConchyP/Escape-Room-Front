@@ -95,8 +95,8 @@ const startGame = () => {
     nextRound(); // Inicia el juego de secuencia de colores
 };
 
-// Lógica del temporizador
-const timeLeft = ref(20); // 20 segundos para pruebas
+// CUENTA ATRAS, AJUSTAR EL TIEMPO E IMPLEMENTAR AVISO
+const timeLeft = ref(60); // 20 segundos para pruebas
 let timer = null;
 const formattedTime = computed(() => {
     const minutes = Math.floor(timeLeft.value / 60);
@@ -239,7 +239,7 @@ const handleClick = (index) => {
     flex-direction: column;
     text-align: center;
     background-color: black;
-    /* background-image: url('../assets/images/'); POR SI AL FINAL PONGO EL FONDO*/
+    /* background-image: url('../assets/images/'); POR SI AL FINAL PONGO EL FONDO Y NO QUEDA NEGRO*/
     background-size: cover;
 }
 
@@ -301,13 +301,14 @@ const handleClick = (index) => {
 .color-button.active {
     transform: scale(1.1);
 }
-
+check
 .check-filled {
     color: green;
-    size: 20px;
+    size: 80px;
 }
 
 .check-empty {
     color: gray;
+    size: 80px;
 }
 </style> 

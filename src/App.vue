@@ -21,7 +21,6 @@ import Footer from './components/Footer.vue';
 main {
   width: 100%;
   margin: 0 auto;
-  background-color: rgba(185, 163, 141, 0.768);
+  /* background: none; */
 }
-
 </style>

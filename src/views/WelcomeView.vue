@@ -3,40 +3,40 @@
 </script>
 
 <template>
-   
-    <main>
-  
-  <div class="full-screen-image">
-    <img src="../assets/images/Background.jpg" alt="Imagen completa" />
+
+  <div class="background">
+    <div class="content">
+      <h1 class="title">Desafía tu mente,</h1>
+      <h2 class="slogan">escapa en cualquier lugar</h2>
+    </div>
   </div>
 
- </main> 
- 
 </template>
 
 <style scoped>
-.full-screen-image {
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; 
-  overflow: hidden; /* esto evita el scroll */
-  z-index: -1; 
+.background {
+  /* background-image: url("../assets/images/vecteezy_abstract-technology-background-with-black-and-orange-stripes_9653761.jpg"); */
+  background-image: url("../assets/images/Banner.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 
-.full-screen-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  object-position: center;
+.title {
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 0;
+
 }
 
-
-@media (max-width: 600px) {
-  .full-screen-image img {
-    object-fit: contain; 
-  }
+.slogan {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  margin-top: 10px;
 }
 </style>
-

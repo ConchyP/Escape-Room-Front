@@ -1,6 +1,13 @@
 
 <script setup>
+import { ref } from "vue";
 
+
+const isMenuOpen = ref(false);
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
                         
 </script>
 
@@ -8,16 +15,17 @@
   <nav class="navbar navbar-expand-lg custom-navbar fixed-top w-100">
     <div class="container-fluid">
   
-      <a class="navbar-brand d-flex align-items-center" href="../views/HomeView.vue">
+      <router-link class="navbar-brand d-flex align-items-center" to="/Welcome">
+      <!-- <a class="navbar-brand d-flex align-items-center" href="../views/HomeView.vue"> -->
         <img src="../assets/images/Logo.png" alt="Logo" class="logo-image" />
 
 
         <div class="slogan-container ms-3">
           <span class="slogan-line"></span>
         </div>
-      </a>
+      </router-link>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      <button class="navbar-toggler" type="button"   @click="toggleMenu" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

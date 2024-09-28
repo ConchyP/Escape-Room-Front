@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'welcome',
+      name: 'welcomeView',
       component: WelcomeView
     },
     {
@@ -33,6 +33,11 @@ const router = createRouter({
       path: '/Card',
       name: 'Card',
       component: () => import('../views/CardView.vue')
+    },
+    {
+      path: '/GameFinally',
+      name: 'GameFinally',
+      component: () => import('../views/GameFinallyView.vue')
     }
   ]
 })

@@ -1,5 +1,5 @@
 <script setup>
-import Game1 from '@/components/Game1.vue';
+import Card from '@/components/Card.vue';
 
 
 
@@ -8,14 +8,13 @@ import Game1 from '@/components/Game1.vue';
 <template>
     <nav></nav>
 <main>
-    <Game1/>
+    <Card/>
 </main>
 </template>
 
 <style scoped>
-main {
+/* main {
   width: 100%;
   margin: 0 auto;
-
-}
+} */
 </style>

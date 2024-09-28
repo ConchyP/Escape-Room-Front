@@ -1,7 +1,6 @@
 <script setup>
 
-
-import CountDownTimer from '@/components/game/CountDownTimer.vue';
+import Game2 from '@/components/Game2.vue';
 
 
 
@@ -12,7 +11,7 @@ import CountDownTimer from '@/components/game/CountDownTimer.vue';
 <main>
 
 <div>
-<CountDownTimer/>
+<Game2/>
 
 
 </div>
@@ -22,5 +21,12 @@ import CountDownTimer from '@/components/game/CountDownTimer.vue';
 </template>
 
 <style scoped>
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  background-color: black;
+
+}
 
 </style> 
