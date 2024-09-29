@@ -48,6 +48,9 @@ const toggleMenu = () => {
           <li class="nav-item">
             <router-link class="nav-link" to="/Card">Card</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/Dashboard">Admin</router-link>
+          </li>
         </ul>
       </div>
     </div>

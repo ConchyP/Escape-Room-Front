@@ -110,7 +110,7 @@ const getDifficultyLevel = (difficulty) => {
 }
 
 .custom-card:hover {
-  transform: scale(1.08); /* Aumenta un poco la tarjeta al hacer hover */
+  transform: scale(1.08); 
 }
 
 .card-left {

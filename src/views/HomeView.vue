@@ -5,7 +5,7 @@ import Banner from '@/components/Banner.vue';
 </script>
 
 <template>
-
+<nav></nav>
   <main>
     <div class="banner">
       <Banner />
@@ -16,31 +16,13 @@ import Banner from '@/components/Banner.vue';
 <style scoped>
 .banner {
 
-  margin-bottom: 80px;
-}
-/* 
-.full-screen-image {
-  background: url('../assets/images/Banner.jpg');
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vh;
-  height: 100vh;
-  overflow: hidden;
-  /* Esto evita el scroll */
-  /* z-index: -1;
+  margin-top: 80px;
 }
 
-.full-screen-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-} */ 
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .full-screen-image img {
     object-fit: contain;
   }
-}
+} */
 </style>

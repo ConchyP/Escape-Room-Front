@@ -16,21 +16,29 @@
 
 <style scoped>
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .jumbotron {
   background-image: url('../assets/images/Banner.jpg');
   background-size: cover;
   background-position: center;
   width: 80vw;
-  height: 50vh;
+  min-height: 50vh;  /* Cambiado para adaptarse mejor */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
   color: white;
-  margin-top: 0;
   box-shadow: 0 8px 50px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin: 0 auto; /* Centra horizontalmente */
 }
 
 .title {
@@ -49,21 +57,23 @@
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
+
 .login-btn {
-  background-color: #f68f32; 
+  background-color: #f68f32;
   color: white;
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  border: 2px solid #ffffff; 
+  border: 2px solid #ffffff;
   border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease; 
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   background-clip: padding-box;
+  max-width: 100%;  /* Asegura que el botón no se desborde */
 }
 
 .login-btn:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -84,4 +94,6 @@
     font-size: 1rem;
   }
 }
+
 </style>
+
