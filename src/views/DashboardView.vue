@@ -1,5 +1,7 @@
 <script setup>
-import TableAdmin from '../components/TableAdmin.vue';
+import Table from '../components/Table.vue';
+
+
 
 
 
@@ -9,7 +11,7 @@ import TableAdmin from '../components/TableAdmin.vue';
 <nav></nav>
   <main>
   
-<TableAdmin/>
+<Table/>
   </main>
 </template>
 
