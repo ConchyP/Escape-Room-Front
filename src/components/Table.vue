@@ -1,43 +1,8 @@
-
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-const escapeRooms = ref([
-  {
-    id: 1,
-    nombre: 'Sala del Enigma',
-    descripcion: 'Una habitación llena de acertijos y misterios.',
-    dificultad: 'Media',
-    image: 'sala_enigma.jpg',
-    checked: false
-  },
-  {
-    id: 2,
-    nombre: 'La Prisión Perdida',
-    descripcion: 'Escapa de una antigua prisión olvidada.',
-    dificultad: 'Alta',
-    image: 'prision_perdida.jpg',
-    checked: false
-  },
-  {
-    id: 3,
-    nombre: 'Laboratorio Secreto',
-    descripcion: 'Descubre los experimentos secretos.',
-    dificultad: 'Baja',
-    image: 'laboratorio_secreto.jpg',
-    checked: false
-  },
-  {
-    id: 4,
-    nombre: 'El Tesoro Pirata',
-    descripcion: 'Encuentra el tesoro escondido de los piratas.',
-    dificultad: 'Media',
-    image: 'tesoro_pirata.jpg',
-    checked: false
-  }
-])
-// const escapeRooms = ref([]); 
+const escapeRooms = ref([]); 
 const isModalVisible = ref(false);
 const isEditMode = ref(false);
 const currentRoom = ref({
@@ -57,7 +22,7 @@ const showAddModal = () => {
 
 // Función para mostrar el modal de edición
 const editRoom = (room) => {
-  currentRoom.value = { ...room };  // Clonamos el objeto para no mutar directamente el original
+  currentRoom.value = { ...room };
   isEditMode.value = true;
   isModalVisible.value = true;
 };
@@ -70,7 +35,11 @@ const closeModal = () => {
 // Función para añadir un nuevo escape room
 const addRoom = async () => {
   try {
-    const response = await axios.post('http://localhost:8080/api/v1/escapeRooms/create', currentRoom.value);
+    const response = await axios.post('http://localhost:8080/api/v1/escapeRooms/create', currentRoom.value, {
+      headers: {
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+      }
+    });
     escapeRooms.value.push(response.data);
     closeModal();
   } catch (error) {
@@ -81,7 +50,11 @@ const addRoom = async () => {
 // Función para actualizar un escape room existente
 const updateRoom = async () => {
   try {
-    const response = await axios.put(`http://localhost:8080/api/v1/escapeRooms/${currentRoom.value.id}`, currentRoom.value);
+    const response = await axios.put(`http://localhost:8080/api/v1/escapeRooms/${currentRoom.value.id}`, currentRoom.value, {
+      headers: {
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+      }
+    });
     const index = escapeRooms.value.findIndex(room => room.id === currentRoom.value.id);
     if (index !== -1) {
       escapeRooms.value[index] = response.data;
@@ -92,29 +65,28 @@ const updateRoom = async () => {
   }
 };
 
-// Función para manejar la carga de imágenes
-const handleFileUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    // Aquí puedes manejar la subida del archivo
-    currentRoom.value.image = file;
-  }
-};
-
 // Función para eliminar un escape room
-const deleteRoom = async (room) => {
+const deleteRoom = async (roomId) => {
   try {
-    await axios.delete(`http://localhost:8080/api/v1/escapeRooms/${id}`);
-    escapeRooms.value = escapeRooms.value.filter(r => r.id !== id);
+    await axios.delete(`http://localhost:8080/api/v1/escapeRooms/${roomId}`, {
+      headers: {
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+      }
+    });
+    escapeRooms.value = escapeRooms.value.filter(r => r.id !== roomId);
   } catch (error) {
     console.error("Error al eliminar el escape room:", error);
   }
 };
 
-// Ejemplo: Método para obtener los escape rooms al montar el componente
+// Función para obtener los escape rooms al montar el componente
 const fetchEscapeRooms = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/api/v1/escapeRooms');
+    const response = await axios.get('http://localhost:8080/api/v1/escapeRooms/all', {
+      headers: {
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+      }
+    });
     escapeRooms.value = response.data;
   } catch (error) {
     console.error("Error al obtener los escape rooms:", error);
@@ -122,7 +94,9 @@ const fetchEscapeRooms = async () => {
 };
 
 // Llamar a la función para cargar los datos al montar el componente
-fetchEscapeRooms();
+onMounted(() => {
+  fetchEscapeRooms();
+});
 </script>
 
 <template>
@@ -214,6 +188,7 @@ fetchEscapeRooms();
     </div>
   </main>
 </template>
+
 
 <style scoped>
 .container {
