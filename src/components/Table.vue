@@ -2,7 +2,9 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
+// Estado reactivo
 const escapeRooms = ref([]); 
+const selectedRoomIds = ref([]); // Para almacenar los IDs seleccionados
 const isModalVisible = ref(false);
 const isEditMode = ref(false);
 const currentRoom = ref({
@@ -65,17 +67,22 @@ const updateRoom = async () => {
   }
 };
 
-// Función para eliminar un escape room
-const deleteRoom = async (roomId) => {
+// Función para eliminar escape rooms seleccionados
+const deleteSelectedRooms = async () => {
   try {
-    await axios.delete(`http://localhost:8080/api/v1/escapeRooms/${roomId}`, {
-      headers: {
-        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
-      }
-    });
-    escapeRooms.value = escapeRooms.value.filter(r => r.id !== roomId);
+    await Promise.all(selectedRoomIds.value.map(async (roomId) => {
+      await axios.delete(`http://localhost:8080/api/v1/escapeRooms/${roomId}`, {
+        headers: {
+          'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+        }
+      });
+    }));
+    
+    // Filtrar los escape rooms eliminados
+    escapeRooms.value = escapeRooms.value.filter(room => !selectedRoomIds.value.includes(room.id));
+    selectedRoomIds.value = []; // Limpiar la selección después de eliminar
   } catch (error) {
-    console.error("Error al eliminar el escape room:", error);
+    console.error("Error al eliminar los escape rooms:", error);
   }
 };
 
@@ -97,6 +104,16 @@ const fetchEscapeRooms = async () => {
 onMounted(() => {
   fetchEscapeRooms();
 });
+
+// Función para alternar la selección de un escape room
+const toggleSelectRoom = (roomId) => {
+  const index = selectedRoomIds.value.indexOf(roomId);
+  if (index > -1) {
+    selectedRoomIds.value.splice(index, 1); // Si ya está seleccionado, quitarlo
+  } else {
+    selectedRoomIds.value.push(roomId); // Si no está seleccionado, agregarlo
+  }
+};
 </script>
 
 <template>
@@ -113,7 +130,7 @@ onMounted(() => {
               <thead>
                 <tr>
                   <th>
-                    <input type="checkbox" v-model="checkAll" @change="toggleCheckAll" />
+                    <input type="checkbox" @change="toggleCheckAll" />
                   </th>
                   <th>ID</th>
                   <th>Nombre</th>
@@ -125,9 +142,9 @@ onMounted(() => {
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(room, index) in escapeRooms" :key="index">
+                <tr v-for="room in escapeRooms" :key="room.id">
                   <td>
-                    <input type="checkbox" v-model="room.checked" />
+                    <input type="checkbox" :value="room.id" @change="toggleSelectRoom(room.id)" />
                   </td>
                   <td>{{ room.id }}</td>
                   <td>{{ room.nombre }}</td>
@@ -140,7 +157,7 @@ onMounted(() => {
                     <button class="btn btn-primary btn-xs" @click="editRoom(room)">Editar</button>
                   </td>
                   <td>
-                    <button class="btn btn-danger btn-xs" @click="deleteRoom(room)">Eliminar</button>
+                    <button class="btn btn-danger btn-xs" @click="deleteSelectedRooms">Eliminar</button>
                   </td>
                 </tr>
               </tbody>
@@ -188,6 +205,7 @@ onMounted(() => {
     </div>
   </main>
 </template>
+
 
 
 <style scoped>
