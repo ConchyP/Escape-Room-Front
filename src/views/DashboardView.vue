@@ -1,6 +1,7 @@
 <script setup>
+import TableAdmin from '../components/TableAdmin.vue';
 
-import Banner from '@/components/Banner.vue';
+
 
 </script>
 
@@ -8,7 +9,7 @@ import Banner from '@/components/Banner.vue';
 <nav></nav>
   <main>
   
-    
+<TableAdmin/>
   </main>
 </template>
 
