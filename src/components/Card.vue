@@ -101,8 +101,7 @@ const getDifficultyLevel = (difficulty) => {
   background-color: #000000;
   color: #ffffff;
   border-radius: 6px;
-  border-radius: solid;
-  border-radius: #f68f32;
+  border: 2px solid #ffffff;
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;

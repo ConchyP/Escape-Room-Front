@@ -5,31 +5,31 @@
 <template>
 
   <div class="jumbotron">
-    <h2 class="title">Desafía tu mente,</h2> 
+    <h1 class="title">Desafía tu mente,</h1> 
     <h2>escapa en cualquier lugar</h2>
     <hr class="divider">
-    <p class="login-info">Logéate para acceder a nuestros escape rooms</p>
-    <router-link to="/Login" class="login-btn">Login</router-link>
+    <h3 class="login-info">Dale a jugar y comienza tu aventura</h3>
+    <!-- <router-link to="/Login" class="login-btn">Login</router-link> -->
   </div>
 
 </template>
 
 <style scoped>
-
+/* 
 html, body {
   height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .jumbotron {
   background-image: url('../assets/images/Banner.jpg');
   background-size: cover;
   background-position: center;
   width: 80vw;
-  min-height: 50vh;  /* Cambiado para adaptarse mejor */
+  min-height: 300px;  /* Cambiado para adaptarse mejor */
   display: flex;
   flex-direction: column;
   justify-content: center;
