@@ -184,7 +184,7 @@ const toggleSelectRoom = (roomId) => {
         <form @submit.prevent="isEditMode ? updateRoom() : addRoom()">
           <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input type="text" v-model="currentRoom.nombre" required />
+            <input class="nombre" type="text" v-model="currentRoom.nombre" required />
           </div>
           <div class="form-group">
             <label for="descripcion">Descripción:</label>
@@ -192,14 +192,24 @@ const toggleSelectRoom = (roomId) => {
           </div>
           <div class="form-group">
             <label for="dificultad">Dificultad:</label>
-            <input type="text" v-model="currentRoom.dificultad" required />
+            <select v-model="currentRoom.dificultad" required>
+            <option value="" disabled selected>Selecciona una dificultad</option>
+            <option value="Baja">Baja</option>
+            <option value="Media">Media</option>
+            <option value="Alta">Alta</option>
+          </select>
           </div>
           <div class="form-group">
             <label for="imagen">Imagen:</label>
             <input type="file" @change="handleFileUpload" />
           </div>
-          <button type="submit" class="btn btn-success">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
-          <button type="button" class="btn btn-danger" @click="closeModal">Cancelar</button>
+          <div class="buttons">
+  
+          <button type="submit" id="btn-crear" class="btn btn-success">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+      
+          <button type="button" id="btn-cancelar"class="btn btn-success" @click="closeModal">Cancelar</button>
+        
+      </div>
         </form>
       </div>
     </div>
@@ -232,26 +242,67 @@ const toggleSelectRoom = (roomId) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(186, 181, 177, 0.468);;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
+  display:flex;
+  justify-content: center;
+  align-items: center;
   background: white;
   padding: 20px;
   border-radius: 5px;
   width: 400px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  display:flex;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.nombre{
+  width: 350px;
+  border-radius: 6px;
+  border:solid orange
+}
+textarea{
+  width: 350px;
+  border-radius: 6px;
+  border:solid orange
+}
+
+select{
+  align-items: center;
+  border-radius: 6px;
+  border:solid orange
+}
+
 .btn-xs {
   padding: 5px 10px;
   font-size: 0.75rem;
 }
+
 .btn-success{
-  margin-top: 50px;
-background-color: #f68f32;
+  width: 100px;
+  height: auto;
+  margin-top: 30px;
+}
+
+#btn-crear{
+  margin-right: 30px;
+}
+#btn-cancelar{
+  background-color: red;
+
 }
 
 /* Estilos responsivos */
