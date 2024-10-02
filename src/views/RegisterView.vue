@@ -1,5 +1,5 @@
 <script setup>
-import Login from '@/components/Login.vue';
+import Register from '@/components/Register.vue';
 
 
 
@@ -10,7 +10,7 @@ import Login from '@/components/Login.vue';
 <main>
   <div class="background">
 
-<Login/>
+<Register/>
 
 
 </div>

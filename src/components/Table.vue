@@ -2,9 +2,8 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-// Estado reactivo
-const escapeRooms = ref([]); 
-const selectedRoomIds = ref([]); // Para almacenar los IDs seleccionados
+const escapeRooms = ref([]);
+const selectedRoomIds = ref([]);
 const isModalVisible = ref(false);
 const isEditMode = ref(false);
 const currentRoom = ref({
@@ -15,31 +14,30 @@ const currentRoom = ref({
   image: ''
 });
 
-// Función para mostrar el modal de añadir
 const showAddModal = () => {
   currentRoom.value = { id: null, nombre: '', descripcion: '', dificultad: '', image: '' };
   isEditMode.value = false;
   isModalVisible.value = true;
 };
 
-// Función para mostrar el modal de edición
+
 const editRoom = (room) => {
   currentRoom.value = { ...room };
   isEditMode.value = true;
   isModalVisible.value = true;
 };
 
-// Función para cerrar el modal
+
 const closeModal = () => {
   isModalVisible.value = false;
 };
 
-// Función para añadir un nuevo escape room
+
 const addRoom = async () => {
   try {
     const response = await axios.post('http://localhost:8080/api/v1/escapeRooms/create', currentRoom.value, {
       headers: {
-        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
       }
     });
     escapeRooms.value.push(response.data);
@@ -49,7 +47,7 @@ const addRoom = async () => {
   }
 };
 
-// Función para actualizar un escape room existente
+
 const updateRoom = async () => {
   try {
     const response = await axios.put(`http://localhost:8080/api/v1/escapeRooms/${currentRoom.value.id}`, currentRoom.value, {
@@ -67,7 +65,7 @@ const updateRoom = async () => {
   }
 };
 
-// Función para eliminar escape rooms seleccionados
+
 const deleteSelectedRooms = async () => {
   try {
     await Promise.all(selectedRoomIds.value.map(async (roomId) => {
@@ -77,21 +75,21 @@ const deleteSelectedRooms = async () => {
         }
       });
     }));
-    
-    // Filtrar los escape rooms eliminados
+
+
     escapeRooms.value = escapeRooms.value.filter(room => !selectedRoomIds.value.includes(room.id));
-    selectedRoomIds.value = []; // Limpiar la selección después de eliminar
+    selectedRoomIds.value = [];
   } catch (error) {
     console.error("Error al eliminar los escape rooms:", error);
   }
 };
 
-// Función para obtener los escape rooms al montar el componente
+
 const fetchEscapeRooms = async () => {
   try {
     const response = await axios.get('http://localhost:8080/api/v1/escapeRooms/all', {
       headers: {
-        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
       }
     });
     escapeRooms.value = response.data;
@@ -100,18 +98,17 @@ const fetchEscapeRooms = async () => {
   }
 };
 
-// Llamar a la función para cargar los datos al montar el componente
 onMounted(() => {
   fetchEscapeRooms();
 });
 
-// Función para alternar la selección de un escape room
+
 const toggleSelectRoom = (roomId) => {
   const index = selectedRoomIds.value.indexOf(roomId);
   if (index > -1) {
-    selectedRoomIds.value.splice(index, 1); // Si ya está seleccionado, quitarlo
+    selectedRoomIds.value.splice(index, 1);
   } else {
-    selectedRoomIds.value.push(roomId); // Si no está seleccionado, agregarlo
+    selectedRoomIds.value.push(roomId);
   }
 };
 </script>
@@ -121,9 +118,9 @@ const toggleSelectRoom = (roomId) => {
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-10">
-          <h4 class="text-center">Listado de Escape Rooms</h4>
+          <h1 class="text-center">LISTADO DE ESCAPE ROOMS</h1>
           <div class="d-flex justify-content-between">
-            <button class="btn btn-success" @click="showAddModal"> + Añadir ER</button>
+            <button id="add-er" class="btn btn-success" @click="showAddModal"> + Añadir ER</button>
           </div>
           <div class="table-responsive">
             <table id="mytable" class="table table-bordered table-striped">
@@ -193,32 +190,34 @@ const toggleSelectRoom = (roomId) => {
           <div class="form-group">
             <label for="dificultad">Dificultad:</label>
             <select v-model="currentRoom.dificultad" required>
-            <option value="" disabled selected>Selecciona una dificultad</option>
-            <option value="Baja">Baja</option>
-            <option value="Media">Media</option>
-            <option value="Alta">Alta</option>
-          </select>
+              <option value="" disabled selected>Selecciona una dificultad</option>
+              <option value="Baja">Baja</option>
+              <option value="Media">Media</option>
+              <option value="Alta">Alta</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="imagen">Imagen:</label>
             <input type="file" @change="handleFileUpload" />
           </div>
           <div class="buttons">
-  
-          <button type="submit" id="btn-crear" class="btn btn-success">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
-      
-          <button type="button" id="btn-cancelar"class="btn btn-success" @click="closeModal">Cancelar</button>
-        
-      </div>
+
+            <button type="submit" id="btn-crear" class="btn btn-success">{{ isEditMode ? 'Actualizar' : 'Crear'
+              }}</button>
+
+            <button type="button" id="btn-cancelar" class="btn btn-success" @click="closeModal">Cancelar</button>
+
+          </div>
         </form>
       </div>
     </div>
   </main>
 </template>
 
-
-
 <style scoped>
+h1{
+  margin-top: 150px;
+}
 .container {
   display: flex;
   justify-content: center;
@@ -227,7 +226,7 @@ const toggleSelectRoom = (roomId) => {
 }
 
 .table {
-  margin-top: 2rem;
+
   text-align: center;
 }
 
@@ -242,14 +241,15 @@ const toggleSelectRoom = (roomId) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(186, 181, 177, 0.468);;
+  background-color: rgba(186, 181, 177, 0.468);
+  ;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: white;
@@ -265,25 +265,27 @@ const toggleSelectRoom = (roomId) => {
 }
 
 label {
-  display:flex;
+  display: flex;
   font-size: 1.5em;
   font-weight: bold;
 }
-.nombre{
+
+.nombre {
   width: 350px;
   border-radius: 6px;
-  border:solid orange
-}
-textarea{
-  width: 350px;
-  border-radius: 6px;
-  border:solid orange
+  border: solid 2px orange
 }
 
-select{
+textarea {
+  width: 350px;
+  border-radius: 6px;
+  border: solid 2px orange
+}
+
+select {
   align-items: center;
   border-radius: 6px;
-  border:solid orange
+  border: solid 2px orange
 }
 
 .btn-xs {
@@ -291,16 +293,24 @@ select{
   font-size: 0.75rem;
 }
 
-.btn-success{
-  width: 100px;
+#add-er {
+  background-color: orange;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+  border: solid 2px black;
+  margin-bottom: 15px;
+}
+
+.btn-success {
+  width: 120px;
   height: auto;
   margin-top: 30px;
 }
 
-#btn-crear{
+#btn-crear {
   margin-right: 30px;
 }
-#btn-cancelar{
+
+#btn-cancelar {
   background-color: red;
 
 }

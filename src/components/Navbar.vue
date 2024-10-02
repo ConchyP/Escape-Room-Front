@@ -15,8 +15,7 @@ const toggleMenu = () => {
   <nav class="navbar navbar-expand-lg custom-navbar fixed-top w-100">
     <div class="container-fluid">
   
-      <router-link class="navbar-brand d-flex align-items-center" to="/Welcome">
-      <!-- <a class="navbar-brand d-flex align-items-center" href="../views/HomeView.vue"> -->
+      <router-link class="navbar-brand d-flex align-items-center" to="/">
         <img src="../assets/images/Logo.png" alt="Logo" class="logo-image" />
 
 
@@ -51,6 +50,9 @@ const toggleMenu = () => {
           <li class="nav-item">
             <router-link class="nav-link" to="/Dashboard">Admin</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/Register">Register</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -59,8 +61,9 @@ const toggleMenu = () => {
 
 <style scoped>
 .custom-navbar {
-  background: linear-gradient(to bottom, #000000 , #393939, #000000); 
-  box-shadow: 0 4px 8px rgba(17, 17, 16, 0.56);
+  /* background: linear-gradient(to bottom, #000000 , #393939, #000000);  */
+  background:rgb(0, 0, 0);
+  box-shadow: 0 5px 8px rgba(17, 17, 16, 0.56);
   transition: background-color 0.3s ease; 
   position:fixed;
 }
@@ -70,10 +73,6 @@ const toggleMenu = () => {
   width: auto;
 }
 
-.name-image{
-  height: 50px;
-  width: 350px;
-}
 
 .navbar-toggler {
   border-color: rgba(15, 13, 13, 0.5);

@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 
-// Lógica del texto inicial
 const fullText = `
 Accediendo al sistema........
 
@@ -13,7 +12,7 @@ Accediendo al sistema........
 
 Si quieres recuperarlo tendrás que superar mis pruebas.
 `;
-const preparationMessage = `
+const presentationPatata = `
 Soy Patata, 
 
 No me subestimes, 
@@ -23,6 +22,17 @@ Solo aquellos con reflejos rápidos y mentes agudas pueden derrotarme.
 Enfrentarás tres pruebas. 
 
 Si fallas, todos tus archivos quedarán en mi poder. 
+`;
+const preparationMessage = `
+Primero, 
+
+Vamos a probar tu atención, 
+
+¿ Puedes seguir la secuencia de los colores ?. 
+
+Presta atención, 
+
+cualquier error podría salirte caro. 
 
 ¿ Estás preparado ?
 `;
@@ -30,9 +40,11 @@ Si fallas, todos tus archivos quedarán en mi poder.
 const isTyping = ref(true);
 const typingIndex = ref(0);
 const formattedText = ref('');
+const formattedPresentationText = ref('');
 const formattedPreparationText = ref('');
 const isPreparing = ref(false);
 const isGameStarted = ref(false);
+const isPresenting = ref(false);
 
 const typeText = (text, formatted, callback) => {
     typingIndex.value = 0;
@@ -50,7 +62,7 @@ const typeText = (text, formatted, callback) => {
                 if (endIndex !== -1) {
                     const quotedText = text.substring(typingIndex.value - 1, endIndex + 1);
                     formatted.value = formatted.value.slice(0, -1);  // Eliminar el último carácter antes de agregar el texto
-                    if (quotedText.includes('Error')) {
+                    if (quotedText.includes('Erro')) {
                         formatted.value += `<span class="error">${quotedText}</span>`;
                     } else if (quotedText.includes('Hackeo')) {
                         formatted.value += `<span class="hack">${quotedText}</span>`;
@@ -75,9 +87,20 @@ onMounted(() => {
     typeText(fullText, formattedText, () => {
         isTyping.value = false;
         // Iniciar preparación automáticamente después de terminar de escribir el texto completo
-        setTimeout(prepareForGame, 1000); // Espera 1 segundo antes de iniciar la preparación
+        setTimeout(showPresentation, 1000); // Espera 1 segundo antes de iniciar la preparación
     });
 });
+
+const showPresentation = () => {
+    isPresenting.value = true;
+    isTyping.value = true;
+
+    typeText(presentationPatata, formattedPresentationText, () => {
+        isTyping.value = false;
+        // Después de la presentación, mostrar el mensaje de preparación
+        setTimeout(prepareForGame, 1000); // Espera 1 segundo antes de iniciar la preparación
+    });
+};
 
 const prepareForGame = () => {
     isPreparing.value = true;
@@ -189,13 +212,18 @@ const handleClick = (index) => {
 
 <template>
     <div class="console">
+
         <!-- Introducción inicial -->
-        <div v-if="!isGameStarted && !isPreparing" class="typing-effect" v-html="formattedText"></div>
+        <div v-if="!isPresenting && !isGameStarted && !isPreparing" class="typing-effect" v-html="formattedText"></div>
+
+        <!-- Presentación de Patata -->
+        <div v-if="isPresenting && !isGameStarted && !isPreparing" class="typing-effect" v-html="formattedPresentationText"></div>
+
+        <!-- Mensaje de Preparación -->
         <div v-if="isPreparing && !isGameStarted" class="typing-effect" v-html="formattedPreparationText"></div>
 
         <!-- Botón "Comenzar" -->
         <button v-if="!isTyping && isPreparing && !isGameStarted" @click="startGame" class="start-button">Comenzar</button>
-
 
         <!-- Juego y Temporizador cuando comienza el juego -->
         <div v-if="isGameStarted" class="game-area">

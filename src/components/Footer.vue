@@ -16,7 +16,8 @@
 <style scoped>
 
 .footer {
-  background:linear-gradient(to top, #000000 , #393939, #000000); 
+  /* background:linear-gradient(to top, #000000 , #393939, #000000);  */
+  background-color: black;
   widows: 0 4px 8px rgba(17, 17, 16, 0.56);
   transition: background-color 0.3s ease; 
   width: 100%;
@@ -29,7 +30,7 @@
   bottom: 0;
   left: 0;
   box-shadow: 0 4px 8px rgba(17, 17, 16, 0.56);
-
+  z-index: 2;
 }
 
 #link {

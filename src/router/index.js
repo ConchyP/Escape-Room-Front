@@ -5,7 +5,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/welcome',
+      path: '/',
       name: 'welcomeView',
       component: WelcomeView
     },
@@ -34,10 +34,21 @@ const router = createRouter({
       name: 'Card',
       component: () => import('../views/CardView.vue')
     },
+    ,
+    {
+      path: '/escape_room/:1',
+      name: 'GameHackerEr',
+      component: () => import('../escape_rooms/1.GameHackerERView.vue')
+    },
     {
       path: '/Dashboard',
       name: 'Dashboard',
       component: () => import('../views/DashboardView.vue')
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: () => import('../views/RegisterView.vue')
     }
 
   ]

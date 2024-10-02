@@ -4,8 +4,6 @@ import Card from '@/components/Card.vue';
 import Searcher from '@/components/Searcher.vue';
 
 
-
-
 </script>
 
 <template>
@@ -25,12 +23,15 @@ import Searcher from '@/components/Searcher.vue';
 
 <style scoped>
 main {
+  background-image: url("../assets/images/naranja-blanco-negro-fondo-grunge-abstracto_548646-47668.png");
+  background-size: cover;
   width: 100%;
   margin: 0 auto;
 }
 
 .banner{
   margin-top:100px;
+  border-radius: 8PX;
 }
 
 .searcher{

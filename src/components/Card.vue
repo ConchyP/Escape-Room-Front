@@ -3,23 +3,21 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-// Estado reactivo para almacenar los escape rooms y el control del texto expandido
-const escapeRooms = ref([]);  // Guardar la lista de escape rooms
-const showMore = ref([]);     // Controlar el estado expandido para cada tarjeta
+const escapeRooms = ref([]);  
+const showMore = ref([]);     
 
-// Función para alternar el estado de 'showMore' para cada tarjeta
 const toggleShowMore = (index) => {
   showMore.value[index] = !showMore.value[index];
 };
 
-// Función para obtener los datos del backend
+
 const fetchEscapeRooms = async () => {
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
     url: 'http://localhost:8080/api/v1/escapeRooms/all',
     headers: { 
-      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Asegúrate de que esta autenticación esté bien configurada
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  
       'Cookie': 'JSESSIONID=AC045ED1927C424A61F1063ECB067870'
     }
   };
@@ -27,13 +25,13 @@ const fetchEscapeRooms = async () => {
   try {
     const response = await axios.request(config);
     escapeRooms.value = response.data;
-    showMore.value = new Array(response.data.length).fill(false);  // Inicializa 'showMore' con 'false'
+    showMore.value = new Array(response.data.length).fill(false);  
   } catch (error) {
     console.error("Error al obtener los escape rooms:", error);
   }
 };
 
-// Ejecutar la función cuando el componente se monte
+
 onMounted(() => {
   fetchEscapeRooms();
 });
@@ -45,10 +43,10 @@ const getDifficultyLevel = (difficulty) => {
     if (difficulty.toLowerCase() === 'media') return 2;
     if (difficulty.toLowerCase() === 'alta') return 3;
   } else if (typeof difficulty === 'number') {
-    // Si la dificultad es un número directamente
+   
     return difficulty;
   }
-  // Valor por defecto en caso de que no se cumpla ninguna condición
+
   return 0;
 };
 </script>
@@ -93,19 +91,21 @@ const getDifficultyLevel = (difficulty) => {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
+  background-color: red;
 }
 
 .custom-card {
   display: flex;
   width: 600px;
-  background-color: #000000;
+  background-color: #000000c9;
   color: #ffffff;
   border-radius: 6px;
-  border: 2px solid #ffffff;
+  /* border: 3px solid #0d0d0d; */
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
   cursor: pointer;
+  box-shadow: 2px 4px 10px rgba(2, 2, 2, 0.5);
 }
 
 .custom-card:hover {
@@ -163,8 +163,8 @@ const getDifficultyLevel = (difficulty) => {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  position: relative; /* Asegurarse de que el botón mantenga su posición */
-  z-index: 1; /* Asegúrate de que el botón esté por encima de otros elementos */
+  position: relative; 
+  z-index: 1; 
 }
 
 .btn-play:hover {
@@ -177,12 +177,16 @@ const getDifficultyLevel = (difficulty) => {
   left: 0;
   right: 0;
   padding: 15px;
-  background-color: rgba(137, 137, 137, 0.83);
+  background-color: #f68d3294;
+  margin-left: 8px;;
+  border-radius: 3px;;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1rem;
   opacity: 0;
+  width:350px;
   visibility: hidden;
   transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .custom-card:hover .card-description {

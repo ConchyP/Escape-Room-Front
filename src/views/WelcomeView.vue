@@ -15,8 +15,7 @@
 
 <style scoped>
 .background {
-  /* background-image: url("../assets/images/vecteezy_abstract-technology-background-with-black-and-orange-stripes_9653761.jpg"); */
-  background-image: url("../assets/images/Banner.jpg");
+  background-image: url("../assets/images/BackgroundEscape.png");
   background-size: cover;
   background-position: center;
   height: 100vh;

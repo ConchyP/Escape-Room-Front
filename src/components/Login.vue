@@ -2,19 +2,19 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { usePopupStore } from "../stores/popup";
+// import { usePopupStore } from "../stores/popup";
 import { useAuthStore } from "@/stores/auth";
 import { loginChange } from "@/stores/loginChange";
 
-const popupStore = usePopupStore();
+// const popupStore = usePopupStore();
 const authStore = useAuthStore();
 const router = useRouter();
 const route = useRoute();
 
 const isLoginActive = ref(true);
 const username = ref("");
-const password = ref(""); // Cambia loginPassword a password para mayor claridad
-const showPass = ref(false); // Inicializa la variable showPass
+const password = ref(""); 
+const showPass = ref(false); 
 const textAlert = ref("");
 
 // Función para alternar la visibilidad de la contraseña
@@ -48,7 +48,7 @@ const handleLogin = async () => {
       const redirectPath = route.query.redirect || "/game";
       await router.push(redirectPath);
 
-      closePopup(); // Cierra el popup después del inicio de sesión
+    //   closePopup(); // Cierra el popup después del inicio de sesión
     } else {
       textAlert.value = "Incorrect username or password!";
     }
@@ -59,9 +59,9 @@ const handleLogin = async () => {
 };
 
 // Función para alternar entre el registro y el inicio de sesión
-const Register = () => {
-  loginChange.setRegister(!loginChange.register);
-};
+// const Register = () => {
+//   loginChange.setRegister(!loginChange.register);
+// };
 
 </script>
 
@@ -127,7 +127,7 @@ const Register = () => {
     transform: translate(-50%, -50%);
     width: 390px; 
     min-height: 150px; 
-    background: #fff; 
+    background: #ffffff4c; 
     border-radius: 10px;
     padding: 26px 23px 35px 21px; 
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -256,7 +256,7 @@ const Register = () => {
 
  .bb-login {
      width: 390px;
-     background: #fff;
+     background: #ffffffde;
      border-radius: 10px;
      overflow: hidden;
      padding: 26px 23px 35px 21px;
