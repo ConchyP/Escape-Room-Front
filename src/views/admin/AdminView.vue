@@ -1,11 +1,11 @@
 <script setup>
-import NavbarWithLogin from '@/components/Navbar/NavbarWithLogin.vue';
-import Card from '../components/Card.vue';
-import Banner from '@/components/Banner.vue'; 
+import NavBarAdmin from '@/components/Navbar/NavbarAdmin.vue';
+import Card from '../../components/Card.vue';
+import Banner from '../../components/Banner.vue'; 
 </script>
 
 <template>
-<NavbarWithLogin/>
+<NavBarAdmin/>
   <main>
     <div class="banner">
     <Banner/>

@@ -2,11 +2,9 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-// import { usePopupStore } from "../stores/popup";
 import { useAuthStore } from "@/stores/auth";
-import { loginChange } from "@/stores/loginChange";
 
-// const popupStore = usePopupStore();
+
 const authStore = useAuthStore();
 const router = useRouter();
 const route = useRoute();
@@ -17,16 +15,16 @@ const password = ref("");
 const showPass = ref(false); 
 const textAlert = ref("");
 
-// Función para alternar la visibilidad de la contraseña
+
 const toggleShowPassword = () => {
   showPass.value = !showPass.value;
 };
 
-// Función para manejar el inicio de sesión
+
 const handleLogin = async () => {
   if (username.value.trim() === "" || password.value.trim() === "") {
     textAlert.value = "Username or password cannot be empty!";
-    return; // Evitar que continúe si los campos están vacíos
+    return; 
   }
 
   try {
@@ -38,30 +36,33 @@ const handleLogin = async () => {
       authStore.user.username = response.username;
       authStore.user.role = response.roles;
 
-      // Almacenar información en localStorage
+     
       localStorage.setItem("id", response.id);
       localStorage.setItem("username", response.username);
       localStorage.setItem("role", response.roles);
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("token", btoa(`${username.value}:${password.value}`));
 
-      const redirectPath = route.query.redirect || "/game";
-      await router.push(redirectPath);
+      const userRole = response.roles;
+      let redirectPath;
+      if (userRole.includes('ROLE_ADMIN')) {
+        redirectPath = '/admin'; // Cambia esto a la ruta de tu vista de admin
+      } else if (userRole.includes('ROLE_USER')) {
+        redirectPath = '/HomeView'; // Cambia esto a la ruta de tu vista de user
+      } else {
+        redirectPath = '/game'; // Ruta por defecto si el rol no se reconoce
+      }
 
-    //   closePopup(); // Cierra el popup después del inicio de sesión
+      await router.push(redirectPath);
+    
     } else {
       textAlert.value = "Incorrect username or password!";
     }
   } catch (error) {
     textAlert.value = "Error trying to login, please try again.";
-    console.error("Login error:", error); // Log para depuración
+    console.error("Login error:", error); 
   }
 };
-
-// Función para alternar entre el registro y el inicio de sesión
-// const Register = () => {
-//   loginChange.setRegister(!loginChange.register);
-// };
 
 </script>
 
@@ -103,11 +104,10 @@ const handleLogin = async () => {
             {{ textAlert }}
           </div>
 
-        
           <div class="text-center p-t-115">
-            <span class="txt1">Don’t have an account?</span>
-            <a class="txt2" href="#">Sign Up</a>
-          </div>
+  <span class="txt1">¿No tienes cuenta?</span>
+  <router-link class="txt2" to="/Register">Registrate</router-link>
+</div>
         </form>
       </div>
     </div>

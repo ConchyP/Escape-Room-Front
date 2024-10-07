@@ -1,4 +1,5 @@
 <script setup>
+import NavbarNotLogin from '@/components/Navbar/NavbarNotLogin.vue';
 import Register from '@/components/Register.vue';
 
 
@@ -6,7 +7,7 @@ import Register from '@/components/Register.vue';
 </script>
 
 <template>
-
+<NavbarNotLogin/>
 <main>
   <div class="background">
 

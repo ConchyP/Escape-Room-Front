@@ -4,7 +4,9 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const escapeRooms = ref([]);  
-const showMore = ref([]);     
+const showMore = ref([]);   
+  
+import defaultImage from '../assets/images/escapeRoomBanner.jpg';
 
 const toggleShowMore = (index) => {
   showMore.value[index] = !showMore.value[index];
@@ -18,7 +20,6 @@ const fetchEscapeRooms = async () => {
     url: 'http://localhost:8080/api/v1/escapeRooms/all',
     headers: { 
       'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  
-      'Cookie': 'JSESSIONID=AC045ED1927C424A61F1063ECB067870'
     }
   };
 
@@ -55,10 +56,10 @@ const getDifficultyLevel = (difficulty) => {
       <div v-for="(escapeRoom, index) in escapeRooms" :key="escapeRoom.id" class="custom-card">
         <div class="card-left">
           <img
-            class="card-img-left"
-            :src="escapeRoom.image"
-            alt="Card image"
-          />
+          class="card-img-left"
+          :src= "defaultImage"
+          alt="Card image"
+        />
         </div>
         <div class="card-right">
           <h4 class="card-title">
@@ -89,23 +90,28 @@ const getDifficultyLevel = (difficulty) => {
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: space-between;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0);
+  margin-bottom: 100px;
 }
 
 .custom-card {
   display: flex;
+  flex-wrap: wrap;
+  opacity: 0.9;
   width: 600px;
-  background-color: #000000c9;
+  background-color: #000000;
   color: #ffffff;
   border-radius: 6px;
-  /* border: 3px solid #0d0d0d; */
+  /* border: 3px solid #d25c08; */
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
   cursor: pointer;
-  box-shadow: 2px 4px 10px rgba(2, 2, 2, 0.5);
+  box-shadow: 4px 8px 15px rgba(231, 121, 3, 0.638);
+  /* -8px -12px 20px rgba(231, 121, 3, 0.638); */
+  margin:15px;
 }
 
 .custom-card:hover {
@@ -134,6 +140,7 @@ const getDifficultyLevel = (difficulty) => {
 .card-title {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color:rgb(255, 255, 255);
   font-weight: bold;
 }
 
@@ -177,7 +184,7 @@ const getDifficultyLevel = (difficulty) => {
   left: 0;
   right: 0;
   padding: 15px;
-  background-color: #f68d3294;
+  background-color: #f68d32e2;
   margin-left: 8px;;
   border-radius: 3px;;
   color: #fff;

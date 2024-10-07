@@ -160,7 +160,7 @@ const toggleSelectRoom = (roomId) => {
               </tbody>
             </table>
             <div class="clearfix"></div>
-            <ul class="pagination justify-content-center">
+            <!-- <ul class="pagination justify-content-center">
               <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
               <li class="active"><a href="#">1</a></li>
               <li><a href="#">2</a></li>
@@ -168,7 +168,7 @@ const toggleSelectRoom = (roomId) => {
               <li><a href="#">4</a></li>
               <li><a href="#">5</a></li>
               <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </div>
