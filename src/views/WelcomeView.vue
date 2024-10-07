@@ -54,7 +54,7 @@ const handleClick = () => {
   height: 100vh;
 }
 
-/* Aplica la fuente Orbitron a todos los textos y añade el efecto neón */
+
 h1, h2, h3, h4 {
   font-family: 'Orbitron', sans-serif;
   text-align: center;
@@ -62,7 +62,7 @@ h1, h2, h3, h4 {
   text-shadow: 0 0 10px rgba(255, 128, 0, 0.8),
                0 0 20px rgba(255, 128, 0, 0.6),
                0 0 30px rgba(255, 128, 0, 0.4),
-               0 0 40px rgba(255, 100, 0, 0.2); /* Efecto de neón */
+               0 0 40px rgba(255, 100, 0, 0.2); 
 }
 
 .title {
@@ -90,7 +90,6 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
-/* Botón con efecto hover */
 .button {
   background: #000000;
   color: #c16b26;

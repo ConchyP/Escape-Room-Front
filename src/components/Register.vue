@@ -1,14 +1,14 @@
 <template>
     <div class="register-form-container">
-      <h2>Register</h2>
+      <h2>Registro</h2>
       <form @submit.prevent="handleSubmit">
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Username</label>
           <input
             type="text"
             v-model="name"
             id="name"
-            placeholder="Enter your name"
+            placeholder="Ingresa tu nombre de usuario"
             required
           />
         </div>
@@ -37,7 +37,7 @@
   
         <button type="submit">Register</button>
       </form>
-      <p v-if="message">{{ message }}</p> <!-- Mensaje de éxito o error -->
+      <p v-if="message">{{ message }}</p> 
     </div>
   </template>
   
@@ -66,14 +66,14 @@ export default {
         method: 'post',
         url: 'http://localhost:8080/api/v1/register',
         headers: {
-          'Authorization': 'Basic ' + btoa('admin:password'), // Cambia admin y password según tu configuración
+          'Authorization': 'Basic ' + btoa('admin:password'), 
           'Content-Type': 'application/json'
         },
-        data: JSON.stringify(data) // Convertimos los datos a JSON
+        data: JSON.stringify(data) 
       };
 
       try {
-        // Realizamos la solicitud al servidor
+ 
         const response = await axios.request(config);
         console.log(response.data);
         this.message = "¡Registro exitoso!";
@@ -98,7 +98,7 @@ export default {
   
   h2 {
     text-align: center;
-    color: #ff7f50;
+    color: #c16b26;
     margin-bottom: 20px;
   }
   
@@ -124,13 +124,13 @@ export default {
   }
   
   input:focus {
-    border-color: #ff7f50;
+    border-color: #c16b26;
   }
   
   button {
     width: 100%;
     padding: 10px;
-    background-color: #ff7f50;
+    background-color:#c16b26;
     border: none;
     color: white;
     font-size: 16px;
@@ -140,10 +140,10 @@ export default {
   }
   
   button:hover {
-    background-color: #ff6347;
+    background-color: orange;
   }
   
-  /* Estilo para los mensajes */
+
   p {
     text-align: center;
     color: green;

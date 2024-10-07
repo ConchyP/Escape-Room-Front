@@ -115,7 +115,7 @@ const toggleSelectRoom = (roomId) => {
 
 <template>
   <main>
-    <div class="container">
+    <div>
       <div class="row justify-content-center">
         <div class="col-md-10">
           <h1 class="text-center">LISTADO DE ESCAPE ROOMS</h1>
@@ -160,15 +160,6 @@ const toggleSelectRoom = (roomId) => {
               </tbody>
             </table>
             <div class="clearfix"></div>
-            <!-- <ul class="pagination justify-content-center">
-              <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            </ul> -->
           </div>
         </div>
       </div>
@@ -216,7 +207,7 @@ const toggleSelectRoom = (roomId) => {
 
 <style scoped>
 h1{
-  margin-top: 150px;
+  margin-top: 100px;
 }
 .container {
   display: flex;
@@ -273,19 +264,19 @@ label {
 .nombre {
   width: 350px;
   border-radius: 6px;
-  border: solid 2px orange
+  border: solid 2px #c16b26;
 }
 
 textarea {
   width: 350px;
   border-radius: 6px;
-  border: solid 2px orange
+  border: solid 2px #c16b26;
 }
 
 select {
   align-items: center;
   border-radius: 6px;
-  border: solid 2px orange
+  border: solid 2px #c16b26;
 }
 
 .btn-xs {
@@ -294,7 +285,7 @@ select {
 }
 
 #add-er {
-  background-color: orange;
+  background-color: #c16b26;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
   border: solid 2px black;
   margin-bottom: 15px;

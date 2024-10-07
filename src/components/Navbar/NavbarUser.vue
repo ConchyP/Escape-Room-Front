@@ -47,8 +47,9 @@ const toggleMenu = () => {
 <style scoped>
 .custom-navbar {
   /* background: linear-gradient(to bottom, #000000 , #393939, #000000);  */
-  background:rgb(0, 0, 0);
+  background:rgb(0, 0, 0.888);
   box-shadow: 0 5px 8px rgba(17, 17, 16, 0.56);
+  opacity:0.9;
   transition: background-color 0.3s ease; 
   position:fixed;
 }

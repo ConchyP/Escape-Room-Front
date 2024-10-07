@@ -1,12 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router'; // Importar el router
+import { useRouter } from 'vue-router'; 
 
-// Estado para controlar si se ha hecho clic en el botón
+
 const isClicked = ref(false);
-const router = useRouter(); // Hook para manejar la navegación
+const router = useRouter(); 
 
-// Función que se ejecuta al hacer clic en el botón
+
 const handleClick = () => {
   isClicked.value = true; // Mostrar el candado abierto
 

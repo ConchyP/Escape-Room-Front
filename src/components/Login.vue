@@ -46,11 +46,11 @@ const handleLogin = async () => {
       const userRole = response.roles;
       let redirectPath;
       if (userRole.includes('ROLE_ADMIN')) {
-        redirectPath = '/admin'; // Cambia esto a la ruta de tu vista de admin
+        redirectPath = '/admin'; 
       } else if (userRole.includes('ROLE_USER')) {
-        redirectPath = '/HomeView'; // Cambia esto a la ruta de tu vista de user
+        redirectPath = '/Home';
       } else {
-        redirectPath = '/game'; // Ruta por defecto si el rol no se reconoce
+        redirectPath = '/game'; 
       }
 
       await router.push(redirectPath);

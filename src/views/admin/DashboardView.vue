@@ -1,5 +1,5 @@
 <script setup>
-import NavbarAdmin from '@/components/Navbar/NavBarAdmin.vue';
+import NavbarAdmin from '@/components/Navbar/NavbarAdmin.vue';
 import Table from '../../components/Table.vue';
 
 </script>
@@ -16,6 +16,9 @@ import Table from '../../components/Table.vue';
 </template>
 
 <style scoped>
+main{
+  background-color:grey;
+}
 .table{
   margin-bottom: 100px;
 }

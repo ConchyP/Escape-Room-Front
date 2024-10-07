@@ -73,10 +73,17 @@ const getDifficultyLevel = (difficulty) => {
             <span v-if="getDifficultyLevel(escapeRoom.dificultad) === 3">🔑🔑🔑</span>
           </p>
           <div class="btn-container">
+            <RouterLink :to="'/game'">
             <button class="btn-play">
               JUGAR
             </button>
+          </RouterLink>
           </div>
+
+          <transition name="fade" appear>
+      <img v-if="showImage" src="../assets/images/escapeRoomBanner.jpg" alt="Transición" class="pre-game-image" />
+    </transition>
+
           <p class="card-description">
             {{ escapeRoom.descripcion }}
           </p>
@@ -94,6 +101,7 @@ const getDifficultyLevel = (difficulty) => {
   justify-content: space-between;
   background-color: rgba(255, 0, 0, 0);
   margin-bottom: 100px;
+  margin-top:200px;
 }
 
 .custom-card {
