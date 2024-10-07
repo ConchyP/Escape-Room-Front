@@ -88,7 +88,7 @@ img{
   height:auto;
 }
 .nav-link img {
-  transition: filter 0.2s; /* Transición suave para el filtro */
+  transition: filter 0.2s; 
 }
 
 .nav-link:hover img {

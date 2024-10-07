@@ -14,5 +14,4 @@ export default class RegisterService {
         const response = await this.#repo.register(this.#credentials)
         return response
     }
-
 }

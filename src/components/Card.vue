@@ -39,7 +39,7 @@ onMounted(() => {
 
 const getDifficultyLevel = (difficulty) => {
   if (typeof difficulty === 'string') {
-    // Normalizar el texto a minúsculas y comparar
+ 
     if (difficulty.toLowerCase() === 'baja') return 1;
     if (difficulty.toLowerCase() === 'media') return 2;
     if (difficulty.toLowerCase() === 'alta') return 3;
@@ -51,6 +51,7 @@ const getDifficultyLevel = (difficulty) => {
   return 0;
 };
 </script>
+
 <template>
     <div class="container">
       <div v-for="(escapeRoom, index) in escapeRooms" :key="escapeRoom.id" class="custom-card">
@@ -67,7 +68,7 @@ const getDifficultyLevel = (difficulty) => {
           </h4>
           <p class="card-difficulty">
             Dificultad: {{ escapeRoom.dificultad }}
-            <!-- Mostrar llaves según la dificultad -->
+         
             <span v-if="getDifficultyLevel(escapeRoom.dificultad) === 1">🔑</span>
             <span v-if="getDifficultyLevel(escapeRoom.dificultad) === 2">🔑🔑</span>
             <span v-if="getDifficultyLevel(escapeRoom.dificultad) === 3">🔑🔑🔑</span>
@@ -112,7 +113,6 @@ const getDifficultyLevel = (difficulty) => {
   background-color: #000000;
   color: #ffffff;
   border-radius: 6px;
-  /* border: 3px solid #d25c08; */
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
@@ -209,7 +209,6 @@ const getDifficultyLevel = (difficulty) => {
   visibility: visible;
 }
 
-/* Para dispositivos móviles */
 @media (max-width: 768px) {
   .custom-card {
     width: 100%;

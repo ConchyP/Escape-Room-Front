@@ -52,7 +52,7 @@ const updateRoom = async () => {
   try {
     const response = await axios.put(`http://localhost:8080/api/v1/escapeRooms/${currentRoom.value.id}`, currentRoom.value, {
       headers: {
-        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  
       }
     });
     const index = escapeRooms.value.findIndex(room => room.id === currentRoom.value.id);
@@ -71,7 +71,7 @@ const deleteSelectedRooms = async () => {
     await Promise.all(selectedRoomIds.value.map(async (roomId) => {
       await axios.delete(`http://localhost:8080/api/v1/escapeRooms/${roomId}`, {
         headers: {
-          'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  // Incluye la autenticación
+          'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',  
         }
       });
     }));
@@ -165,7 +165,6 @@ const toggleSelectRoom = (roomId) => {
       </div>
     </div>
 
-    <!-- Modal para añadir/editar Escape Room -->
     <div v-if="isModalVisible" class="modal-overlay">
       <div class="modal-content">
         <h2>{{ isEditMode ? 'Editar Escape Room' : 'Añadir Escape Room' }}</h2>
@@ -306,7 +305,7 @@ select {
 
 }
 
-/* Estilos responsivos */
+
 @media (max-width: 768px) {
   .table-img {
     width: 40px;

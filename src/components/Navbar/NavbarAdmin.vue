@@ -27,7 +27,7 @@ const toggleMenu = () => {
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Aquí cambiamos el comportamiento del colapso usando Vue -->
+   
       <div :class="['collapse', 'navbar-collapse', { show: isMenuOpen }]" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -121,7 +121,7 @@ img{
   margin-left: 5px; 
 }
 .nav-link img {
-  transition: filter 0.2s; /* Transición suave para el filtro */
+  transition: filter 0.2s; 
 }
 
 .nav-link:hover img {

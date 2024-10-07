@@ -86,7 +86,7 @@ export default {
 };
 </script>
   <style scoped>
-  /* Estilos del formulario */
+
   .register-form-container {
     max-width: 400px;
     margin: 50px auto;
